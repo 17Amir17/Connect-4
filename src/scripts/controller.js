@@ -11,14 +11,22 @@ export class Controller {
   constructor(parentElement, sizeX, sizeY) {
     this.#sizeX = sizeX;
     this.#sizeY = sizeY;
+
+    this.#createEvents();
     this.#view = new View(parentElement, sizeX, sizeY);
     this.#model = new Model(sizeX, sizeY);
     this.#subscribeEvents();
     this.#game = { turn: 1 };
   }
 
+  #createEvents() {
+    Events.addEvent('onGameEnd');
+  }
+
   #subscribeEvents() {
     Events.subscribe('onBlockClick', this.#onBlockClick);
+    Events.subscribe('onBlockHover', this.#onBlockHover);
+    Events.subscribe('onBlockOut', this.#onBlockOut);
   }
 
   #onBlockClick = (event) => {
@@ -32,18 +40,17 @@ export class Controller {
     if (placePos) {
       // If you can place, place on both view and model
       this.#model.setBlock(placePos[0], placePos[1], this.#game.turn);
+      this.#view.setBlock(placePos, false); //Remove the hover effect
       this.#view.setBlock(placePos, this.#game.turn);
-      //Little bit time to render
-      setTimeout(() => {
-        // Check if somebody won
-        const winner = this.#getWinner(board);
-        if (winner) {
-          alert(winner);
-        } else {
-          // If nobody won change turns
-          this.#game.turn = this.#game.turn === 1 ? 2 : 1;
-        }
-      }, 100);
+      // Check if somebody won
+      const winner = this.#getWinner(board);
+      if (winner) {
+        Events.trigger('onGameEnd', { winner });
+      } else {
+        // If nobody won change turns
+        this.#game.turn = this.#game.turn === 1 ? 2 : 1;
+        Events.trigger('onBlockHover', { pos: placePos }); //Trigger new hover
+      }
     } else alert('Cant place there!');
   };
 
@@ -136,5 +143,15 @@ export class Controller {
       }
     }
     return false;
+  };
+
+  #onBlockHover = (event) => {
+    const pos = this.#getBlockPlacePos(this.#model.board, event.pos);
+    if (pos) this.#view.setBlock(pos, `${this.#game.turn}over`);
+  };
+
+  #onBlockOut = (event) => {
+    const pos = this.#getBlockPlacePos(this.#model.board, event.pos);
+    if (pos) this.#view.setBlock(pos, false);
   };
 }

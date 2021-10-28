@@ -1,7 +1,12 @@
+import { Events } from './event.js';
+
 export class Model {
+  #size;
   #board;
   constructor(sizeX, sizeY) {
-    this.#gameBoard = [sizeX, sizeY];
+    this.#size = [sizeX, sizeY];
+    this.#gameBoard = this.#size;
+    Events.subscribe('onGameEnd', this.#onGameEnd);
   }
 
   set #gameBoard(size) {
@@ -23,4 +28,12 @@ export class Model {
   setBlock(x, y, value) {
     this.#board[x][y] = value;
   }
+
+  #clearBoard() {
+    this.#gameBoard = this.#size;
+  }
+
+  #onGameEnd = () => {
+    this.#clearBoard();
+  };
 }
