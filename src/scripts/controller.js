@@ -115,7 +115,7 @@ export class Controller {
       for (let y = 0; y < this.#sizeY - 3; y++) {
         // console.log(x, y);
         const player = board[x][y];
-        let count = 1;
+        let count = 0;
         for (let z = 0; z < 4; z++) {
           const block = board[x + z][y + z];
           if (block === player && block != 0) {
@@ -132,7 +132,7 @@ export class Controller {
     for (let x = 0; x < this.#sizeX - 3; x++) {
       for (let y = this.#sizeY - 1; y >= 3; y--) {
         const player = board[x][y];
-        let count = 1;
+        let count = 0;
         for (let z = 0; z < 4; z++) {
           const block = board[x + z][y - z];
           if (block === player && block != 0) {
