@@ -1,3 +1,4 @@
-import { Board } from './dom/board.js';
+import { Controller } from './controller.js';
 
-Board.createBoard(document.querySelector('#board'), 8, 8);
+const parentElement = document.querySelector('main');
+const game = new Controller(parentElement, 7, 7);

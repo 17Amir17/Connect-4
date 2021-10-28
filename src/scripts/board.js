@@ -1,6 +1,16 @@
 export class Board {
-  static createBoard(boardElement, sizeX, sizeY) {
+  /**
+   * Create a board out of svg elements with dataset of (x, y)
+   * Change color of circle in block by changing fill
+   * @param {Element} parentElement
+   * @param {int} sizeX
+   * @param {int} sizeY
+   */
+  static createBoard(parentElement, sizeX, sizeY) {
     const blockSize = 100;
+    const boardElement = document.createElement('div');
+    boardElement.setAttribute('id', 'board');
+    parentElement.appendChild(boardElement);
     if (sizeX < 7 || sizeY < 7) throw 'Board is too small min size is 7';
     for (let y = 0; y < sizeY; y++) {
       const row = Board.#createRowElement(y);
@@ -10,6 +20,7 @@ export class Board {
         row.appendChild(block);
       }
     }
+    return boardElement;
   }
 
   static #createBlockElement(blockSize, x, y) {

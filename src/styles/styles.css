@@ -32,3 +32,11 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.team1 {
+  fill: red;
+}
+
+.team2 {
+  fill: yellow;
+}
