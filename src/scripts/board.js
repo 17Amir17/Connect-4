@@ -6,8 +6,16 @@ export class Board {
    * @param {int} sizeX
    * @param {int} sizeY
    */
-  static createBoard(parentElement, sizeX, sizeY) {
-    const blockSize = 100;
+  static createBoard(parentElement, sizeX, sizeY, blockSize = 'default') {
+    switch (blockSize) {
+      case 'dynamic':
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        blockSize = (0.8 * (w > h ? h : w)) / ((sizeX + sizeY) / 2);
+        break;
+      default:
+        blockSize = 100;
+    }
     const boardElement = document.createElement('div');
     boardElement.setAttribute('id', 'board');
     parentElement.appendChild(boardElement);

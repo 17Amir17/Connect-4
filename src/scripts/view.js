@@ -3,7 +3,12 @@ import { Events } from './event.js';
 export class View {
   #boardElement;
   constructor(parentElement, sizeX, sizeY) {
-    this.#boardElement = Board.createBoard(parentElement, sizeX, sizeY);
+    this.#boardElement = Board.createBoard(
+      parentElement,
+      sizeX,
+      sizeY,
+      'dynamic'
+    );
     Events.addEvent('onBlockClick');
     Events.addEvent('onBlockHover');
     Events.addEvent('onBlockOut');
