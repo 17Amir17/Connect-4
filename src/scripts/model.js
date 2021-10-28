@@ -26,7 +26,7 @@ export class Model {
   }
 
   setBlock(x, y, value) {
-    this.#board[x][y] = value;
+    this.#board[y][x] = value;
   }
 
   #clearBoard() {
