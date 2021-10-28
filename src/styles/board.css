@@ -1,0 +1,38 @@
+#board {
+  margin: 0;
+  background-color: rgb(46, 121, 168);
+  display: flex;
+  flex-direction: column;
+}
+
+.circle {
+  stroke: white;
+  fill: rgba(211, 211, 211, 0);
+  stroke-width: 3;
+}
+
+.block {
+  border-color: black;
+  border-style: solid;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.player1 {
+  fill: red;
+}
+
+.player2 {
+  fill: yellow;
+}
+
+.player1over {
+  fill: rgba(255, 0, 0, 0.397);
+}
+
+.player2over {
+  fill: rgba(255, 255, 0, 0.178);
+}
