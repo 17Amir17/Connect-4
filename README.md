@@ -1,7 +1,7 @@
 # Connect-4 by Amir Angel
 
 ![img0](https://i.imgur.com/BDgLKnG.png)
-![img1](https://i.imgur.com/Y0bEf1G.png)
+![img1](https://i.imgur.com/RAIj51T.png)
 
 ## Requirements
 
