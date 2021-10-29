@@ -3,6 +3,8 @@
   background-color: rgb(46, 121, 168);
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 .circle {

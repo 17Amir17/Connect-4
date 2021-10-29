@@ -20,6 +20,7 @@ export class View {
     this.#boardElement.addEventListener('mouseover', this.#onMouseOverBoard);
     this.#boardElement.addEventListener('mouseout', this.#onMouseOutBoard);
     Events.subscribe('onGameEnd', this.#onGameEnd);
+    Events.subscribe('onControllerConstructorEnd', this.#fazeBoard);
   }
 
   #onBoardClick = (event) => {
@@ -76,6 +77,12 @@ export class View {
     setTimeout(() => {
       alert(`Player ${event.winner} won!`);
       this.#clearBoard();
+    }, 10);
+  };
+
+  #fazeBoard = () => {
+    setTimeout(() => {
+      this.#boardElement.style.opacity = 1;
     }, 10);
   };
 }

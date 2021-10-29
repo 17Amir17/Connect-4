@@ -17,10 +17,12 @@ export class Controller {
     this.#model = new Model(sizeX, sizeY);
     this.#subscribeEvents();
     this.#game = { turn: 1 };
+    Events.trigger('onControllerConstructorEnd');
   }
 
   #createEvents() {
     Events.addEvent('onGameEnd');
+    Events.addEvent('onControllerConstructorEnd');
   }
 
   #subscribeEvents() {

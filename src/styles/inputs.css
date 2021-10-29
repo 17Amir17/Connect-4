@@ -11,10 +11,24 @@
 }
 
 .board-input > input {
-  max-width: 30px;
+  max-width: 2em;
+  text-align: center;
+  font-size: x-large;
 }
 
+#welcome {
+  font-size: xx-large;
+}
 #welcome > button {
   margin: 0 auto;
   display: block;
+  border-radius: 1em;
+  width: 10em;
+  height: 2em;
+  font-size: large;
+}
+
+#welcome > button:hover {
+  background-color: lightgrey;
+  cursor: pointer;
 }
