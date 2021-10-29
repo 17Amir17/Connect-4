@@ -7,15 +7,8 @@ export class Board {
    * @param {int} sizeY
    */
   static createBoard(parentElement, sizeX, sizeY, blockSize = 'default') {
-    switch (blockSize) {
-      case 'dynamic':
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        blockSize = (0.8 * (w > h ? h : w)) / ((sizeX + sizeY) / 2);
-        break;
-      default:
-        blockSize = 100;
-    }
+    // Create a board element, attach blocks, and append to document
+    blockSize = Board.#defineBlockSize(blockSize, sizeX, sizeY);
     const boardElement = document.createElement('div');
     boardElement.setAttribute('id', 'board');
     parentElement.appendChild(boardElement);
@@ -31,7 +24,29 @@ export class Board {
     return boardElement;
   }
 
+  static #defineBlockSize(blockSize, sizeX, sizeY) {
+    // Get block size
+    switch (blockSize) {
+      //Dynamic settings make meautomatically calculate the blocksize
+      //I take the smallest value of window height and width and divide in by the avg
+      //amount of blocks in x and y times 0.8
+      case 'dynamic':
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        blockSize = (0.8 * (w > h ? h : w)) / ((sizeX + sizeY) / 2);
+        break;
+      // The default setting is 100 which works great for 7x7
+      default:
+        blockSize = 100;
+    }
+    return blockSize;
+  }
+
   static #createBlockElement(blockSize, x, y) {
+    // Creates a new block Element
+    // A block element is basicaly a SVG element which is a special graphics element
+    // with an svg circle element inside the circle's radius is 40% of the blocks size
+    // and is placed in its center
     const block = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     block.setAttribute('height', blockSize);
     block.setAttribute('width', blockSize);
@@ -51,6 +66,8 @@ export class Board {
   }
 
   static #createRowElement(y) {
+    // A row element is pretty much just a div the css atached to it
+    // that flexes it and set its direction to row
     const row = document.createElement('div');
     row.setAttribute('class', 'row');
     row.dataset.y = y;

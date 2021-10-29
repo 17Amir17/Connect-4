@@ -21,17 +21,21 @@ export class Controller {
   }
 
   #createEvents() {
-    Events.addEvent('onGameEnd');
-    Events.addEvent('onControllerConstructorEnd');
+    //Controller events
+    Events.addEvent('onGameEnd'); //Triggered when game ends
+    Events.addEvent('onControllerConstructorEnd'); //Triggered after constructor
   }
 
   #subscribeEvents() {
+    //Subscribe to events
     Events.subscribe('onBlockClick', this.#onBlockClick);
     Events.subscribe('onBlockHover', this.#onBlockHover);
     Events.subscribe('onBlockOut', this.#onBlockOut);
   }
 
   #onBlockClick = (event) => {
+    //A block was clicked
+    //I now want to check its position get the board and handle the game
     const pos = event.pos;
     const board = this.#model.board;
     this.#handleGame(board, pos);
@@ -57,6 +61,8 @@ export class Controller {
   };
 
   #getBlockPlacePos = (board, pos) => {
+    //Returns the pos of where the block should be placed on the board
+    //If there is no where to place it, will return false
     for (let y = this.#sizeY - 1; y >= 0; y--) {
       if (board[y][pos[0]] === 0) return [pos[0], y];
     }
@@ -64,6 +70,8 @@ export class Controller {
   };
 
   #getWinner = (board) => {
+    // Check for a winner in all direction
+    // If no winner is found, returns false
     const verticleWinner = this.#verticleCheck(board);
     if (verticleWinner) return verticleWinner;
     const horizontalWinner = this.#horizontalCheck(board);
@@ -72,6 +80,8 @@ export class Controller {
     if (diagonalWinner) return diagonalWinner;
     return false;
   };
+
+  // WIN CHECKS
 
   #verticleCheck = (board) => {
     //Verticle Check
@@ -144,12 +154,15 @@ export class Controller {
     return false;
   };
 
+  // Handle some view events
   #onBlockHover = (event) => {
+    // Tell view to change color of hovered block
     const pos = this.#getBlockPlacePos(this.#model.board, event.pos);
     if (pos) this.#view.setBlock(pos, `${this.#game.turn}over`);
   };
 
   #onBlockOut = (event) => {
+    // Tell view to revert color of hovered block
     const pos = this.#getBlockPlacePos(this.#model.board, event.pos);
     if (pos) this.#view.setBlock(pos, false);
   };
