@@ -18,6 +18,7 @@ export class View {
   #addListeners() {
     // Subsribe to listeners
     this.#boardElement.addEventListener('click', this.#onBoardClick);
+    this.#boardElement.addEventListener('touch', this.#onBoardClick);
     this.#boardElement.addEventListener('mouseover', this.#onMouseOverBoard);
     this.#boardElement.addEventListener('mouseout', this.#onMouseOutBoard);
     Events.subscribe('onGameEnd', this.#onGameEnd);
