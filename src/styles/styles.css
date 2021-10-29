@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300&display=swap');
 @import url('./board.css');
+@import url('./inputs.css');
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
 
 body {
   margin: 0;
@@ -12,5 +19,11 @@ body {
 }
 
 footer {
-  margin-top: 5em;
+  position: fixed;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  width: 100%;
+  /* Height of the footer*/
+  height: 40px;
+  text-align: center;
 }

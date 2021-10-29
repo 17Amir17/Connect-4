@@ -1,0 +1,20 @@
+.board-input {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.board-input > input {
+  max-width: 30px;
+}
+
+#welcome > button {
+  margin: 0 auto;
+  display: block;
+}
