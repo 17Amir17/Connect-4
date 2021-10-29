@@ -18,10 +18,6 @@ body {
   background-color: lightgrey;
 }
 
-body > h1 {
-  font-size: xx-large;
-}
-
 footer {
   position: fixed;
   padding: 10px 10px 0px 10px;
