@@ -86,7 +86,7 @@ export class View {
     setTimeout(() => {
       alert(`Player ${event.winner} won!`);
       this.#clearBoard();
-    }, 10);
+    }, 100);
   };
 
   #fazeBoard = () => {

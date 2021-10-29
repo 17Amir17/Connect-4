@@ -1,17 +1,20 @@
 #board {
   margin: 0;
-  background-color: rgb(46, 121, 168);
+  background-color: rgb(91, 149, 185);
   display: flex;
   flex-direction: column;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .circle {
-  stroke: white;
+  stroke: rgb(8, 105, 165);
   fill: rgba(255, 255, 255, 0.644);
   stroke-width: 3;
-  box-shadow: 5px 10px #888888;
+  transition: fill 0.1s ease;
+  filter: drop-shadow(3px 3px 2px rgb(8 105 165 / 1));
 }
 
 .block {
@@ -42,5 +45,5 @@
 }
 
 .player2over {
-  fill: rgba(255, 255, 0, 0.178);
+  fill: rgba(255, 255, 0, 0.459);
 }

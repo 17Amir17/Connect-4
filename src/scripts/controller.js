@@ -57,7 +57,9 @@ export class Controller {
         this.#game.turn = this.#game.turn === 1 ? 2 : 1;
         Events.trigger('onBlockHover', { pos: placePos }); //Trigger new hover
       }
-    } else alert('Cant place there!');
+    } else {
+      // Do nothing for now
+    }
   };
 
   #getBlockPlacePos = (board, pos) => {
