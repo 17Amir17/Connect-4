@@ -51,7 +51,10 @@ export class Controller {
       // Check if somebody won
       const winner = this.#getWinner(board);
       if (winner) {
-        Events.trigger('onGameEnd', { winner });
+        Events.trigger('onGameEnd', {
+          winner: winner.player,
+          positions: winner.winningCoords,
+        });
       } else {
         // If nobody won change turns
         this.#game.turn = this.#game.turn === 1 ? 2 : 1;
@@ -90,14 +93,17 @@ export class Controller {
     for (let x = 0; x < this.#sizeX; x++) {
       let count = 1;
       let player = 0;
+      let winningCoords = [];
       for (let y = 0; y < this.#sizeY; y++) {
         const block = board[y][x];
         if (block === player && block != 0) {
           count += 1;
-          if (count >= 4) return player;
+          winningCoords.push([x, y]);
+          if (count >= 4) return { player, winningCoords };
         } else {
           player = block;
           count = 1;
+          winningCoords = [[x, y]];
         }
       }
     }
@@ -109,14 +115,17 @@ export class Controller {
     for (let y = 0; y < this.#sizeY; y++) {
       let count = 1;
       let player = 0;
+      let winningCoords = [];
       for (let x = 0; x < this.#sizeX; x++) {
         const block = board[y][x];
         if (block === player && block != 0) {
           count += 1;
-          if (count >= 4) return player;
+          winningCoords.push([x, y]);
+          if (count >= 4) return { player, winningCoords };
         } else {
           player = block;
           count = 1;
+          winningCoords = [[x, y]];
         }
       }
     }
@@ -130,11 +139,13 @@ export class Controller {
         // console.log(x, y);
         const player = board[y][x];
         let count = 0;
+        let winningCoords = [];
         for (let z = 0; z < 4; z++) {
           const block = board[y + z][x + z];
           if (block === player && block != 0) {
             count += 1;
-            if (count >= 4) return player;
+            winningCoords.push([x + z, y + z]);
+            if (count >= 4) return { player, winningCoords };
           } else break;
         }
       }
@@ -144,11 +155,13 @@ export class Controller {
       for (let y = this.#sizeY - 1; y >= 3; y--) {
         const player = board[y][x];
         let count = 0;
+        let winningCoords = [];
         for (let z = 0; z < 4; z++) {
           const block = board[y - z][x + z];
           if (block === player && block != 0) {
             count += 1;
-            if (count >= 4) return player;
+            winningCoords.push([x + z, y - z]);
+            if (count >= 4) return { player, winningCoords };
           } else break;
         }
       }

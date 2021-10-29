@@ -13,7 +13,6 @@
   stroke: rgb(8, 105, 165);
   fill: rgba(255, 255, 255, 0.644);
   stroke-width: 3;
-  transition: fill 0.1s ease;
   filter: drop-shadow(3px 3px 2px rgb(8 105 165 / 1));
 }
 
@@ -46,4 +45,8 @@
 
 .player2over {
   fill: rgba(255, 255, 0, 0.459);
+}
+
+.playerhighlight {
+  fill: rgb(46, 173, 29);
 }

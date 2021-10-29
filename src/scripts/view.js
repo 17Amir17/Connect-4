@@ -78,15 +78,29 @@ export class View {
     document.querySelectorAll('.circle').forEach((circle) => {
       circle.classList.remove('player1');
       circle.classList.remove('player2');
+      circle.classList.remove('playerhighlight');
     });
   }
 
-  #onGameEnd = (event) => {
+  #onGameEnd = async (event) => {
     //Give some time to render
+    await this.#highlightWinProof(event.positions);
     setTimeout(() => {
       alert(`Player ${event.winner} won!`);
       this.#clearBoard();
     }, 100);
+  };
+
+  #highlightWinProof = (positions) => {
+    //Highlight the winning blocks
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        for (const pos of positions) {
+          this.setBlock(pos, 'highlight');
+        }
+        resolve();
+      }, 10);
+    });
   };
 
   #fazeBoard = () => {
