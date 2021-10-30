@@ -18,7 +18,7 @@
 
 ## Extra Features
 
-- Custom size board, I limited it to be from 7X7 all the way to 20X20
+- Custom size board, I limited it to be from 6X6 all the way to 20X20
 - When hovering over block a dimmed block will show where you will place it
 - Highlights the winning blocks
 - Bundled with webpack
