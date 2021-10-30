@@ -32,11 +32,11 @@
 }
 
 .player1 {
-  fill: red;
+  fill: #ff0000c2;
 }
 
 .player2 {
-  fill: yellow;
+  fill: #ffff00cf;
 }
 
 .player1over {
@@ -48,5 +48,5 @@
 }
 
 .playerhighlight {
-  fill: rgb(46, 173, 29);
+  fill: rgb(46, 173, 29, 0.5);
 }

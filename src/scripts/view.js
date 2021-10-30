@@ -32,6 +32,7 @@ export class View {
     Events.subscribe('onGameEnd', this.#onGameEnd);
     Events.subscribe('onControllerConstructorEnd', this.#fazeBoard);
     Events.subscribe('onBlockPlaced', this.#onBlockPlaced);
+    Events.subscribe('onTurnChanged', this.#onTurnChanged);
   }
 
   #onBoardClick = (event) => {
@@ -128,5 +129,9 @@ export class View {
     // Once the block is placed I want to recall the hover event
     if (this.#isTouchDevice) return; // If touch device dont continue
     Events.trigger('onBlockHover', event);
+  };
+
+  #onTurnChanged = (event) => {
+    //Here should be a cool player turn animation
   };
 }
