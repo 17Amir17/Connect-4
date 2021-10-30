@@ -33,7 +33,7 @@ export class Board {
       case 'dynamic':
         const w = window.innerWidth;
         const h = window.innerHeight;
-        blockSize = (0.8 * (w > h ? h : w)) / ((sizeX + sizeY) / 2);
+        blockSize = (0.8 * (w > h ? h : w)) / (sizeX > sizeY ? sizeX : sizeY);
         break;
       // The default setting is 100 which works great for 7x7
       default:
