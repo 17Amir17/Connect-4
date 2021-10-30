@@ -8,7 +8,7 @@
 - Built using MVC (Model, View, Controller) programming format
 - Working connect 4 game with a 7x7 board
 - Working win checks (Horizontal, vertical and diagonal)
-- [Github pages deployment](https://17amir17.github.io/Connect-4/)
+- [Github pages deployment](https://17amir17.github.io/Connect-4/dist)
 
 ## Extra Features
 
