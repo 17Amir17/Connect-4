@@ -1,0 +1,116 @@
+@import url(https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300&display=swap);
+#board {
+  margin: 10% 0 0 0;
+  background-color: rgb(91, 149, 185);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.circle {
+  stroke: rgb(8, 105, 165);
+  fill: rgba(255, 255, 255, 0.644);
+  stroke-width: 3;
+  filter: drop-shadow(3px 3px 2px rgb(8 105 165 / 1));
+}
+
+.block {
+  border-color: rgb(60, 129, 172);
+  border-style: solid;
+  background: radial-gradient(
+    circle,
+    rgba(46, 121, 168, 0.377) 0%,
+    rgba(46, 134, 161, 0.13) 100%
+  );
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.player1 {
+  fill: red;
+}
+
+.player2 {
+  fill: yellow;
+}
+
+.player1over {
+  fill: rgba(255, 0, 0, 0.397);
+}
+
+.player2over {
+  fill: rgba(255, 255, 0, 0.459);
+}
+
+.playerhighlight {
+  fill: rgb(46, 173, 29);
+}
+
+.board-input {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.board-input > input {
+  max-width: 2em;
+  text-align: center;
+  font-size: x-large;
+}
+
+#welcome {
+  font-size: xx-large;
+}
+#welcome > button {
+  margin: 0 auto;
+  display: block;
+  border-radius: 1em;
+  width: 10em;
+  height: 2em;
+  font-size: large;
+}
+
+#welcome > button:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+* {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+  background-color: lightgrey;
+}
+
+footer {
+  position: fixed;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  width: 100%;
+  /* Height of the footer*/
+  height: 40px;
+  text-align: center;
+}
+
