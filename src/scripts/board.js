@@ -12,7 +12,7 @@ export class Board {
     const boardElement = document.createElement('div');
     boardElement.setAttribute('id', 'board');
     parentElement.appendChild(boardElement);
-    if (sizeX < 7 || sizeY < 7) throw 'Board is too small min size is 7';
+    if (sizeX < 6 || sizeY < 6) throw 'Board is too small min size is 6';
     for (let y = 0; y < sizeY; y++) {
       const row = Board.#createRowElement(y);
       boardElement.appendChild(row);

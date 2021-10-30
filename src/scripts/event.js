@@ -24,4 +24,8 @@ export class Events {
       else cb();
     }
   }
+
+  static clearEvents() {
+    this.#events = {};
+  }
 }
