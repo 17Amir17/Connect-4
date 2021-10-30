@@ -15,6 +15,14 @@ export class View {
     this.#addListeners();
   }
 
+  get #isTouchDevice() {
+    return (
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.msMaxTouchPoints > 0
+    );
+  }
+
   #addListeners() {
     // Subsribe to listeners
     this.#boardElement.addEventListener('click', this.#onBoardClick);
@@ -23,6 +31,7 @@ export class View {
     this.#boardElement.addEventListener('mouseout', this.#onMouseOutBoard);
     Events.subscribe('onGameEnd', this.#onGameEnd);
     Events.subscribe('onControllerConstructorEnd', this.#fazeBoard);
+    Events.subscribe('onBlockPlaced', this.#onBlockPlaced);
   }
 
   #onBoardClick = (event) => {
@@ -33,12 +42,14 @@ export class View {
 
   #onMouseOverBoard = (event) => {
     // Add hover event
+    if (this.#isTouchDevice) return; //If touch device dont!
     const pos = this.#getBlockPos(event);
     Events.trigger('onBlockHover', { pos });
   };
 
   #onMouseOutBoard = (event) => {
     // Remove hover event
+    if (this.#isTouchDevice) return; //If touch device dont!
     const pos = this.#getBlockPos(event);
     Events.trigger('onBlockOut', { pos });
   };
@@ -111,5 +122,11 @@ export class View {
     setTimeout(() => {
       this.#boardElement.style.opacity = 1;
     }, 10);
+  };
+
+  #onBlockPlaced = (event) => {
+    // Once the block is placed I want to recall the hover event
+    if (this.#isTouchDevice) return; // If touch device dont continue
+    Events.trigger('onBlockHover', event);
   };
 }

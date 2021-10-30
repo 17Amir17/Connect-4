@@ -24,6 +24,7 @@ export class Controller {
     //Controller events
     Events.addEvent('onGameEnd'); //Triggered when game ends
     Events.addEvent('onControllerConstructorEnd'); //Triggered after constructor
+    Events.addEvent('onBlockPlaced'); //Triggered when block is placed
   }
 
   #subscribeEvents() {
@@ -58,7 +59,7 @@ export class Controller {
       } else {
         // If nobody won change turns
         this.#game.turn = this.#game.turn === 1 ? 2 : 1;
-        Events.trigger('onBlockHover', { pos: placePos }); //Trigger new hover
+        Events.trigger('onBlockPlaced', { pos: placePos }); //Trigger new hover
       }
     } else {
       // Do nothing for now
