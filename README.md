@@ -1,5 +1,11 @@
 # Connect-4 by Amir Angel
 
+## Github Pages
+
+- [Click here to check it out! ](https://17amir17.github.io/Connect-4/dist)
+
+## Sneak Peak
+
 ![img0](https://i.imgur.com/BDgLKnG.png)
 ![img1](https://i.imgur.com/RAIj51T.png)
 
