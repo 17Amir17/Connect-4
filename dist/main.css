@@ -72,6 +72,7 @@
 
 #welcome {
   font-size: xx-large;
+  text-align: center;
 }
 #welcome > button {
   margin: 0 auto;
