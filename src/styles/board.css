@@ -48,5 +48,5 @@
 }
 
 .playerhighlight {
-  fill: rgb(46, 173, 29, 0.5);
+  stroke: black;
 }

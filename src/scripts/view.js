@@ -1,5 +1,6 @@
 import { Board } from './board.js';
 import { Events } from './event.js';
+
 export class View {
   #boardElement;
   constructor(parentElement, sizeX, sizeY) {
@@ -96,12 +97,20 @@ export class View {
   }
 
   #onGameEnd = async (event) => {
+    //Block new clicks
+    this.#boardElement.style.pointerEvents = 'none';
     //Give some time to render
     await this.#highlightWinProof(event.positions);
+    document.body.style.backgroundColor =
+      event.winner === 1 ? '#ff0000c2' : '#ffff00cf';
     setTimeout(() => {
       alert(`Player ${event.winner} won!`);
       this.#clearBoard();
-    }, 100);
+      // Unblock clicks
+      this.#boardElement.style.pointerEvents = '';
+      // Reset body color
+      document.body.style.backgroundColor = 'rgb(91, 149, 185)';
+    }, 300);
   };
 
   #highlightWinProof = (positions) => {
