@@ -1,0 +1,44 @@
+.board-input {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.board-input > input {
+  max-width: 2em;
+  text-align: center;
+  font-size: x-large;
+  background-color: #5391b5;
+  border-style: none;
+}
+
+.board-input > input[type='number']::-webkit-inner-spin-button,
+.board-input > input[type='number']::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+#welcome {
+  font-size: xx-large;
+  text-align: center;
+}
+#welcome > button {
+  margin: 0 auto;
+  display: block;
+  border-radius: 1em;
+  width: 10em;
+  height: 2em;
+  font-size: large;
+  background-color: #f5f5f5;
+  border-style: none;
+}
+
+#welcome > button:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
